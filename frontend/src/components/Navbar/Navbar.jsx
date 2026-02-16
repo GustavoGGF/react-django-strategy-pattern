@@ -59,12 +59,12 @@ export default function Navbar() {
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <Link class="dropdown-item" to="/macapa">
+                    <Link class="dropdown-item" to="/clients/macapa">
                       Macapá
                     </Link>
                   </li>
                   <li>
-                    <Link class="dropdown-item" to="/varejao">
+                    <Link class="dropdown-item" to="/clients/varejao">
                       Varejão
                     </Link>
                   </li>

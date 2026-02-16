@@ -12,7 +12,7 @@ export default function Home() {
             <div className="d-flex justify-content-evenly mt-5">
               <div>
                 <Link
-                  to="/macapa"
+                  to="/clients/macapa"
                   aria-current="page"
                   className="btn btn-primary"
                 >
@@ -21,7 +21,7 @@ export default function Home() {
               </div>
               <div>
                 <Link
-                  to="/varejao"
+                  to="/clients/varejao"
                   aria-current="page"
                   className="btn btn-primary"
                 >
