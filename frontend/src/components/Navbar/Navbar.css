@@ -1,0 +1,12 @@
+.nv_stl {
+  background-color: #2f3e55;
+}
+
+.clr {
+  color: #fff !important;
+  font-weight: bold;
+}
+
+.navbar-toggler-icon.white {
+  filter: invert(1);
+}
