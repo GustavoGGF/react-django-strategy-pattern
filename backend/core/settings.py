@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'contacts'
+    'contacts',
+    'graphene_django'
 ]
 
 MIDDLEWARE = [
@@ -106,6 +107,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+GRAPHENE = {
+    "SCHEMA": "schema.schema.schema"
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/

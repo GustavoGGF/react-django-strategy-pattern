@@ -7,6 +7,8 @@ from django.contrib.staticfiles.urls import (
     staticfiles_urlpatterns,
 )
 from . import views
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
+from graphene_django.views import GraphQLView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -14,7 +16,7 @@ urlpatterns = [
     path('home', TemplateView.as_view(template_name='index.html'), name="home"),
     path('clients/', include('contacts.urls')),
     path('get-token/', views.GetToken),
-    path('graphql/', views.SendData),
+    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
