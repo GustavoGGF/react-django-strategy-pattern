@@ -1,7 +1,19 @@
 import { useDropzone } from "react-dropzone";
+import "./DragDropFile.css";
+import { InputDataFileContext } from "../../context/InputDataFileContext";
+import { useContext, useEffect } from "react";
 
 export default function DragDrop(props) {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+
+  const { setExistFile, setSelectedFile } = useContext(InputDataFileContext);
+
+  useEffect(() => {
+    if (acceptedFiles && acceptedFiles.length > 0) {
+      setExistFile(true);
+      setSelectedFile(acceptedFiles[0]);
+    }
+  }, [acceptedFiles]);
 
   const files = acceptedFiles.map((file) => (
     <li key={file.path}>
@@ -10,8 +22,9 @@ export default function DragDrop(props) {
   ));
 
   return (
-    <section className="container">
+    <section className="container mt-5">
       <div
+        className="container-bd w15h1"
         {...getRootProps({
           onDragOver: (e) => {
             e.preventDefault();

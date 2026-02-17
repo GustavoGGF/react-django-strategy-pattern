@@ -1,0 +1,12 @@
+.container-bd {
+  border: 5px dashed #77df27;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.w15h1 {
+  width: 30em;
+  height: 6em;
+}
