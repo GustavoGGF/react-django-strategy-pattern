@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, InternalAxiosRequestConfig } from "axios";
+import Cookies from "js-cookie";
 
 // Criando instancia do Axios com configuração base
 const api: AxiosInstance = axios.create({
@@ -11,7 +12,7 @@ const api: AxiosInstance = axios.create({
 // Interceptors para adicionar token de autenticação e tratar erros
 api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    const token = localStorage.getItem("csrf");
+    const token = Cookies.get("csrftoken");
 
     if (token && config.headers) {
       config.headers["X-CSRFToken"] = token;
