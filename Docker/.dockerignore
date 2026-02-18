@@ -1,0 +1,15 @@
+# Pastas de dados dos bancos (Geradas pelo Docker)
+data/
+init-db/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Docker
+.git
+.dockerignore
+docker-compose.yml
+Dockerfile

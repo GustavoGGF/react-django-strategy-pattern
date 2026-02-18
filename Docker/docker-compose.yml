@@ -1,0 +1,64 @@
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: Docker/Dockerfile
+    container_name: django_app
+    command: sh -c "sleep 8 && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
+      - DB_HOST=db-mysql
+      - DB_NAME=macapa
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - MONGO_URI=mongodb://admin:password@db-mongo:27017/
+    depends_on:
+      - db-mysql
+      - db-mongo
+    networks:
+      - app-network
+  db-mongo:
+    image: mongo:latest
+    container_name: mongodb_varejao
+    restart: always
+    environment:
+      # Define o banco inicial e credenciais básicas
+      MONGO_INITDB_DATABASE: varejao
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+    volumes:
+      # Persistência: mapeia uma pasta local para os dados do banco
+      - ./data/mongo:/data/db
+    networks:
+      - app-network
+
+  db-mysql:
+    image: mysql:8.0
+    container_name: mysql_macapa
+    restart: always
+    environment:
+      MYSQL_DATABASE: macapa
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init-db/setup.sql:/docker-entrypoint-initdb.d/setup.sql
+      - ./data/mysql:/var/lib/mysql
+    networks:
+      - app-network
+    healthcheck:
+      # Onde fica: Dentro do serviço que fornece o recurso
+      test:
+        ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 10s # Tempo entre as verificações
+      timeout: 5s # Tempo máximo de espera por resposta
+      retries: 5 # Quantas vezes tentar antes de marcar como "unhealthy"
+      start_period: 30s # IMPORTANTE: Tempo de carência para o MySQL criar os arquivos iniciais
+
+networks:
+  app-network:
+    driver: bridge

@@ -28,5 +28,12 @@ __pycache__
 migrations
 
 venv
+.venv
 
 db.sqlite3
+
+Docker/data/mongo/*
+Docker/data/mysql/*
+
+!Docker/data/mongo/.gitkeep
+!Docker/data/mysql/.gitkeep
