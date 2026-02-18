@@ -18,7 +18,6 @@ class ImportContactsMutation(graphene.Mutation):
     message = graphene.String()
 
     def mutate(self, info, contacts, is_manual):
-        print("Caiu no Schemma.py com os contatos: ", contacts)
         # Seleção do Service (Macapá ou Varejão) via Header ou parâmetro
         request = info.context
         
