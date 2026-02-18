@@ -3,13 +3,14 @@ import "../../assets/bootstrap-5.3.8/css/bootstrap.css";
 import "../../assets/bootstrap-5.3.8/js/bootstrap.bundle.min.js";
 import { Link } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({ client }) {
   return (
     <nav class="navbar nv_stl fixed-top w-100">
       <div class="container-fluid">
         <Link class="navbar-brand clr" to="/home">
           react-django-strategy-pattern
         </Link>
+        {client && <span className="navbar-brand clr">Cliente: {client}</span>}
         <div className="d-flex justify-content-end">
           <span className="clr"></span>
         </div>
@@ -59,12 +60,12 @@ export default function Navbar() {
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <Link class="dropdown-item" to="/clients/macapa">
+                    <Link class="dropdown-item" to="/clients/Macapa">
                       Macapá
                     </Link>
                   </li>
                   <li>
-                    <Link class="dropdown-item" to="/clients/varejao">
+                    <Link class="dropdown-item" to="/clients/Varejao">
                       Varejão
                     </Link>
                   </li>
