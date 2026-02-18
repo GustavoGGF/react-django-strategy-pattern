@@ -5,6 +5,7 @@ Full-stack integration service using React, Django, and GraphQL with strategy-ba
 # Clone o repositório
 
 git clone https://github.com/GustavoGGF/react-django-strategy-pattern
+
 cd react-django-strategy-pattern
 
 # Entre na pasta de infraestrutura
