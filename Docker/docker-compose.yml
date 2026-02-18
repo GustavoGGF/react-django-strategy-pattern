@@ -14,14 +14,16 @@ services:
       - DB_USER=root
       - DB_PASSWORD=root
       - MONGO_URI=mongodb://admin:password@db-mongo:27017/
+      - PYTHONUNBUFFERED=1
     depends_on:
       - db-mysql
       - db-mongo
     networks:
       - app-network
   db-mongo:
-    image: mongo:latest
+    image: mongo:7.0
     container_name: mongodb_varejao
+    command: mongod --wiredTigerCacheSizeGB 0.5
     restart: always
     environment:
       # Define o banco inicial e credenciais básicas
@@ -30,9 +32,9 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: password
     ports:
       - "27017:27017"
-    volumes:
-      # Persistência: mapeia uma pasta local para os dados do banco
-      - ./data/mongo:/data/db
+    # volumes:
+    #   # Persistência: mapeia uma pasta local para os dados do banco
+    #   - ./data/mongo:/data/db
     networks:
       - app-network
 
