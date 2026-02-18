@@ -16,10 +16,10 @@ services:
       - MONGO_URI=mongodb://admin:password@db-mongo:27017/
       - PYTHONUNBUFFERED=1
     depends_on:
-      - db-mysql:
-          condition: service_healthy
-      - db-mongo:
-          condition: service_started
+      db-mysql:
+        condition: service_healthy
+      db-mongo:
+        condition: service_started
     networks:
       - app-network
   db-mongo:
