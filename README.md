@@ -12,9 +12,17 @@ cd react-django-strategy-pattern
 
 cd Docker
 
-# Suba os containers em modo daemon
+# Suba os containers
 
 docker compose up -d
+
+# Leitura dos Dados
+
+Para conferir a inserção dos dados no MYSQL utilize o comando:
+docker exec -it mysql_macapa mysql -u root -proot -e "SELECT \* FROM macapa.contacts;"
+
+Para conferir a inserção dos dados no MongoDB utilize o comando:
+docker exec -it mongodb_varejao mongosh -u admin -p password --eval "db.getSiblingDB('varejao').contacts.find().pretty()"
 
 # Melhorias Futuras & Escalabilidade
 

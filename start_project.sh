@@ -34,9 +34,9 @@ npm run build
 echo "Movendo a pasta 'dist' para a pasta backend..."
 mv dist ../backend/
 
-# Entra novamente na pasta backend
-cd ../backend || exit
+# # Entra novamente na pasta backend
+# cd ../backend || exit
 
-# Executa o servidor Django
-echo "Iniciando o servidor Django..."
-python3 manage.py runserver
+# # Executa o servidor Django
+# echo "Iniciando o servidor Django..."
+# python3 manage.py runserver
