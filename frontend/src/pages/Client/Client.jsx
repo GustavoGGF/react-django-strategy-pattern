@@ -109,7 +109,7 @@ export default function Client() {
     try {
       // Usando o seu interceptor do Axios que já coloca o JWT
       const response = await api.post("/graphql/", data, {
-        headers: { "X-Client-Id": { clientId } },
+        headers: { "X-Client-Id": clientId },
       });
       if (response.data) {
         setTextInformation("Banco atualizado!");
@@ -147,7 +147,7 @@ export default function Client() {
 
     try {
       const response = await api.post("/graphql/", payload, {
-        headers: { "X-Client-Id": { clientId } },
+        headers: { "X-Client-Id": clientId },
       });
       if (response.data) {
         setTextInformation("Banco de dados Atualizado com sucesso!!");
